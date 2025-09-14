@@ -2,6 +2,7 @@ package iamsane.kotlinrestfulapi.domain
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.PrePersist
 import jakarta.persistence.Table
@@ -11,7 +12,7 @@ import java.time.Instant
 @Table(name = "users")
 data class User(
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     val id: Long? = null,
 
     val firstName: String,
