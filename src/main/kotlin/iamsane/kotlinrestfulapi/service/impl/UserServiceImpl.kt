@@ -6,12 +6,14 @@ import iamsane.kotlinrestfulapi.mapper.UserMapper
 import iamsane.kotlinrestfulapi.repository.UserRepository
 import iamsane.kotlinrestfulapi.service.UserService
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class UserServiceImpl(
     private val userRepository: UserRepository,
     private val userMapper: UserMapper,
 ) : UserService {
+    @Transactional
     override fun createUser(dto: CreateUserRequest): IdResponse {
         var entity = userMapper.toEntity(dto)
 

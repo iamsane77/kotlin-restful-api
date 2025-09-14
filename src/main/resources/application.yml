@@ -2,7 +2,8 @@ spring:
   application:
     name: kotlin-restful-api
   liquibase:
-    enabled: false
+    enabled: true
+    change-log: db/changelog/main.xml
   datasource:
     url: jdbc:postgresql://localhost:5432/dev
     username: postgres
@@ -10,4 +11,4 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
