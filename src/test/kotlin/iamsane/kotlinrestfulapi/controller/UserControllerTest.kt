@@ -64,8 +64,8 @@ class UserControllerTest {
 
         // when // then
         mockMvc.perform(
-            get("/v1/users/{id}", id)
-                .accept(MediaType.APPLICATION_JSON)
+                get("/v1/users/{id}", id)
+                    .accept(MediaType.APPLICATION_JSON)
             )
             .andExpect(status().isNotFound())
     }
