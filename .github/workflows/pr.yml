@@ -19,5 +19,8 @@ jobs:
       - name: Assemble
         run: ./gradlew assemble
 
+      - name: Lint
+        run: ./gradlew detekt
+
       - name: Test
         run: ./gradlew test
