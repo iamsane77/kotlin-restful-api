@@ -24,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional
 class UserControllerTest {
     @Autowired
     private lateinit var mockMvc: MockMvc
-
     @Autowired
     private lateinit var userRepository: UserRepository
     private val objectMapper = ObjectMapper()
