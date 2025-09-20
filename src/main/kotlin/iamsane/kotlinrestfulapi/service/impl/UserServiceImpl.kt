@@ -7,6 +7,7 @@ import iamsane.kotlinrestfulapi.exception.ResourceNotFoundException
 import iamsane.kotlinrestfulapi.mapper.UserMapper
 import iamsane.kotlinrestfulapi.repository.UserRepository
 import iamsane.kotlinrestfulapi.service.UserService
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -14,10 +15,13 @@ import org.springframework.transaction.annotation.Transactional
 class UserServiceImpl(
     private val userRepository: UserRepository,
     private val userMapper: UserMapper,
+    private val passwordEncoder: PasswordEncoder,
 ) : UserService {
     @Transactional
     override fun createUser(dto: CreateUserRequest): IdResponse {
         var entity = userMapper.toEntity(dto)
+
+        entity = entity.copy(password = passwordEncoder.encode(entity.password))
 
         entity = userRepository.save(entity)
 
